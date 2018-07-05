@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+    nginx:
+        build:
+            context: docker/nginx
+        volumes:
+            - ./public:/app/public:ro
+            - ./var:/app/var
+        ports:
+            - 8080:80
+
+    php:
+        build:
+            context: docker/php
+        volumes:
+            - ./public:/app/public:ro
+            - ./vendor:/app/vendor:ro
+            - ./var:/app/var
