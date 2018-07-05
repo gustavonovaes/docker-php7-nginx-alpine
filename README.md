@@ -1,5 +1,12 @@
 # docker-php7-nginx-alpine
 
+## Versions
+
+```
+Nginx: 1.15
+PHP  : 7.2
+```
+
 ## Run
 
 ```sh
