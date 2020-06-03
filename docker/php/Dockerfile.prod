@@ -7,8 +7,8 @@ ENV PATH="~/.composer/vendor/bin:./vendor/bin:${PATH}"
 RUN apk add --no-cache --virtual .phpize-deps $PHPIZE_DEPS
 
 ## XDebug 2.9.6
-RUN pecl install xdebug-2.9.6 \
-   && docker-php-ext-enable xdebug
+# RUN pecl install xdebug-2.9.6 \
+#    && docker-php-ext-enable xdebug
 
 ## Redis 5.2.2
 RUN pecl install redis-5.2.2 \
@@ -37,17 +37,17 @@ RUN apk add --no-cache postgresql-dev \
 # RUN docker-php-ext-install -j$(nproc) sockets
 
 ## Enable Opcache
-# RUN docker-php-ext-enable opcache 
+RUN docker-php-ext-enable opcache 
 
 # Cleanup PHPIZE deps
 RUN apk del .phpize-deps
 
 # PHP.INI Development
-RUN mv /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
+RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
 # Custom PHP-FPM configs
 ADD php-fpm.conf /usr/local/etc/php-fpm.conf
 ADD www.conf /usr/local/etc/php-fpm.d/www.conf
 
 # Custom PHP configs
-ADD custom.ini /usr/local/etc/php/conf.d/custom.ini
+ADD custom.prod.ini /usr/local/etc/php/conf.d/custom.ini

@@ -12,16 +12,16 @@ services:
   php:
     build:
       context: docker/php
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     working_dir: /app
     volumes:
       - .:/app:ro
     dns:
       - 8.8.8.8
     environment:
-      - APP_ENV=development
+      - APP_ENV=production
     command: >
       sh -c "
-        composer install --no-progress
+        composer install --no-progress --no-dev --optimize-autoloader 
         php-fpm -F
       "

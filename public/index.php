@@ -1,9 +1,9 @@
 <?php
 
-$filePath = __DIR__ . '/php.png';
-$imageContent = file_get_contents($filePath);
+$actions = [
+  'development' => fn () => phpinfo(),
+  'production' => fn () => die('Production'),
+  'default' => fn () => die('APP_ENV not defined!')
+];
 
-header('Content-type: image/png');
-header('Content-length: ' . strlen($imageContent));
-
-echo $imageContent;
+$actions[$_SERVER['APP_ENV'] ?? 'default']();
