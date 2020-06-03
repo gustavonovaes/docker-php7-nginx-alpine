@@ -1,6 +1,6 @@
 # docker-php7-nginx-alpine
 
-Pre-configure enviroment for PHP-FPM + Nginx with Docker using alpine images. 
+Pre-configured environment for PHP-FPM + Nginx with Docker using alpine images.
 
 # Try in development
 
@@ -42,7 +42,7 @@ docker-compose -f docker-compose.prod.yml up
  - Optimizations
 
 # Setup info
- This is setup for a 2GB of RAM machine where 1.5G is dedicated to php-fpm. 
+ This configuration applies to a 2 GB RAM machine where 1.5G is dedicated to php-fpm.
 
 ## Check list
 
@@ -53,7 +53,6 @@ docker-compose -f docker-compose.prod.yml up
  - max children and servers
 
 ### Configs in [custom.ini](docker/php/custom.ini) and [custom.prod.ini](docker/php/custom.prod.ini) for possible restrictions:
-
  - memory limit
  - max execution time
  - upload limits: max filesize, max files
@@ -63,11 +62,10 @@ docker-compose -f docker-compose.prod.yml up
  - General Security: url open/include, disabled_functions
 
 ### [nginx.conf](docker/nginx/nginx.conf):
-  
    - max requests per second or IP zones
    - timeouts: keepalive_timeout, fastcgi_read_timeout
    - client_max_body_size (should be at least the same of upload_max_filesize/post_max_size)
-   - Good pratices injected headers: Content-Security-Policy, X-XSS-Protection, X-Content-Type-Options, X-Frame-Options
+   - Security headers: Content-Security-Policy, X-XSS-Protection, X-Content-Type-Options, X-Frame-Options
 
 # Log
 
