@@ -4,6 +4,7 @@ services:
   nginx:
     build:
       context: docker/nginx
+      dockerfile: Dockerfile.prod
     ports:
       - 80:80
     volumes:
