@@ -30,6 +30,11 @@ RUN apk add --no-cache postgresql-dev \
 #    && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
 #    && docker-php-ext-install -j$(nproc) gd
 
+## ImageMagick 6
+# RUN apk add imagemagick6-dev \
+#   && pecl install imagick-3.4.4 \
+#   && docker-php-ext-enable imagick
+
 ## Calendar
 # RUN docker-php-ext-install -j$(nproc) calendar
 
