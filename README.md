@@ -29,6 +29,7 @@ docker-compose -f docker-compose.prod.yml up
 
 (Commented / Disabled by default )
  - PHP GD: FreeType, JPG, PNG, GIF, WEBP
+ - PHP ImageMagick 6
  - Mysql
  - Zip
  - Calendar
