@@ -2,7 +2,7 @@
 
 Pre-configured environment for PHP-FPM + Nginx with Docker using alpine images.
 
-# Try in development
+# Try development enviroment
 
 ```sh
 git clone https://github.com/gustavonovaes/docker-php7-nginx-alpine.git
@@ -10,7 +10,7 @@ cd docker-php7-nginx-alpine
 docker-compose up 
 ```
 
-# Try in production
+# Try production enviroment
 
 ```sh
 git clone https://github.com/gustavonovaes/docker-php7-nginx-alpine.git
@@ -18,7 +18,7 @@ cd docker-php7-nginx-alpine
 docker-compose -f docker-compose.prod.yml up
 ```
 
-# PHP features and extensions
+# PHP features and extensions available
  - Composer
  - XDebug (only dev)
  - Redis
@@ -27,7 +27,7 @@ docker-compose -f docker-compose.prod.yml up
  - PHP-FPM optimizations
  - PHP security 
 
-(Commented / Disabled by default )
+### Disabled by default
  - PHP GD: FreeType, JPG, PNG, GIF, WEBP
  - PHP ImageMagick 6
  - Mysql
@@ -45,7 +45,7 @@ docker-compose -f docker-compose.prod.yml up
 # Setup info
  This configuration applies to a 2 GB RAM machine where 1.5G is dedicated to php-fpm.
 
-## Check list
+## Configs that you may want to look
 
 ### [php-fpm.conf](docker/php/php-fpm.conf) and [www.conf](docker/php/www.conf):
  - process timeout
@@ -53,7 +53,7 @@ docker-compose -f docker-compose.prod.yml up
  - idle timeout
  - max children and servers
 
-### Configs in [custom.ini](docker/php/custom.ini) and [custom.prod.ini](docker/php/custom.prod.ini) for possible restrictions:
+### Configs in [custom.ini](docker/php/custom.ini) and [custom.prod.ini](docker/php/custom.prod.ini) for set possible restrictions:
  - memory limit
  - max execution time
  - upload limits: max filesize, max files
@@ -73,7 +73,7 @@ docker-compose -f docker-compose.prod.yml up
 The Nginx and PHP-FPM logs are stored in `/var/log`.
 
 
-# Links
+# Learn more in
 
 [A php.ini scanner for best security practices (psecio/iniscan)](https://github.com/psecio/iniscan)
 
