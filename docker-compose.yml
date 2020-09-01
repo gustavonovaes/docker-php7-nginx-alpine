@@ -1,15 +1,6 @@
 version: "3"
 
 services:
-  nginx:
-    build:
-      context: docker/nginx
-      dockerfile: Dockerfile
-    ports:
-      - 80:80
-    volumes:
-      - ./var:/app/var
-      - ./public:/app/public:ro
   php:
     build:
       context: docker/php
@@ -21,8 +12,20 @@ services:
       - 8.8.8.8
     environment:
       - APP_ENV=development
-    command: >
-      sh -c "
-        composer install --no-progress
-        php-fpm -F
-      "
+
+   composer:
+    image: composer:latest
+    volumes:
+      - .:/app
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+      
+  nginx:
+    build:
+      context: docker/nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./var:/app/var
+      - ./public:/app/public:ro
