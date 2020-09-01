@@ -1,15 +1,6 @@
 version: "3"
 
 services:
-  nginx:
-    build:
-      context: docker/nginx
-      dockerfile: Dockerfile.prod
-    ports:
-      - 80:80
-    volumes:
-      - ./var:/app/var
-      - ./public:/app/public:ro
   php:
     build:
       context: docker/php
@@ -21,8 +12,21 @@ services:
       - 8.8.8.8
     environment:
       - APP_ENV=production
-    command: >
-      sh -c "
-        composer install --no-progress --no-dev --optimize-autoloader 
-        php-fpm -F
-      "
+
+   composer:
+    image: composer:latest
+    volumes:
+      - .:/app
+    environment:
+      - COMPOSER_CACHE_DIR=/app/.cache/composer
+    command: composer install --no-progress --no-dev --optimize-autoloader 
+
+  nginx:
+    build:
+      context: docker/nginx
+      dockerfile: Dockerfile.prod
+    ports:
+      - 80:80
+    volumes:
+      - ./var:/app/var
+      - ./public:/app/public:ro
